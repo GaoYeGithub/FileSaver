@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit File - {{ filename }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Saved Files</h2>
+            <ul>
+                {% for file in files %}
+                <li><a href="{{ url_for('edit', filename=file) }}">{{ file }}</a></li>
+                {% endfor %}
+            </ul>
+            <a href="{{ url_for('index') }}">Back to Home</a>
+        </div>
+        <div class="main-content">
+            <h1>Edit File: {{ filename }}</h1>
+            <form method="post">
+                <textarea name="textbox" rows="10" cols="50">{{ saved_text }}</textarea><br>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

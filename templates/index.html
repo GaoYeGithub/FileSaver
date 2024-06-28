@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Text Saver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Saved Files</h2>
+            <ul>
+                {% for file in files %}
+                <li><a href="{{ url_for('edit', filename=file) }}">{{ file }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1>Text Saver</h1>
+            <form method="post">
+                <label for="filename">File Name:</label>
+                <input type="text" id="filename" name="filename" required><br>
+                <textarea name="textbox" rows="10" cols="50"></textarea><br>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
