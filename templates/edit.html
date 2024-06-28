@@ -12,7 +12,7 @@
             <h2>Saved Files</h2>
             <ul>
                 {% for file in files %}
-                <li><a href="{{ url_for('edit', filename=file) }}">{{ file }}</a></li>
+                <li><a href="{{ url_for('edit', filename=file.name) }}">{{ file.name }}</a></li>
                 {% endfor %}
             </ul>
             <a href="{{ url_for('index') }}">Back to Home</a>
@@ -23,6 +23,30 @@
                 <textarea name="textbox" rows="10" cols="50">{{ saved_text }}</textarea><br>
                 <button type="submit">Save</button>
             </form>
+            <form action="{{ url_for('convert_to_audio', filename=filename) }}" method="get">
+                <button type="submit">Convert to Audio</button>
+            </form>
+            {% if audio_exists %}
+            <h2>Audio</h2>
+            <div class="audio-player">
+                <audio id="audio">
+                    <source src="{{ url_for('get_audio', filename=audio_filename) }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <div class="audio-controls">
+                    <button class="play-button" onclick="document.getElementById('audio').play()">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"></path>
+                        </svg>
+                    </button>
+                    <button class="pause-button" onclick="document.getElementById('audio').pause()">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 19h4V5H6zm8-14v14h4V5z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </body>

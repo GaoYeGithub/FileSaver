@@ -79,8 +79,67 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 button:hover {
     background-color: #1d9a6c;
+}
+
+.audio-player {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+audio {
+    display: none;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.audio-controls button {
+    background-color: #3f0e40;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.audio-controls button:hover {
+    background-color: #532753;
+}
+
+.audio-controls button svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+}
+
+.audio-controls .play-button {
+    background-color: #2eb67d;
+}
+
+.audio-controls .play-button:hover {
+    background-color: #1d9a6c;
+}
+
+.audio-controls .pause-button {
+    background-color: #e01e5a;
+}
+
+.audio-controls .pause-button:hover {
+    background-color: #c0174e;
 }

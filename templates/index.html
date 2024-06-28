@@ -12,7 +12,29 @@
             <h2>Saved Files</h2>
             <ul>
                 {% for file in files %}
-                <li><a href="{{ url_for('edit', filename=file) }}">{{ file }}</a></li>
+                <li>
+                    <a href="{{ url_for('edit', filename=file.name) }}">{{ file.name }}</a>
+                    {% if file.audio_exists %}
+                    <div class="audio-player">
+                        <audio id="audio_{{ file.name }}">
+                            <source src="{{ url_for('get_audio', filename=get_audio_filename(file.name)) }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="audio-controls">
+                            <button class="play-button" onclick="document.getElementById('audio_{{ file.name }}').play()">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"></path>
+                                </svg>
+                            </button>
+                            <button class="pause-button" onclick="document.getElementById('audio_{{ file.name }}').pause()">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 19h4V5H6zm8-14v14h4V5z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    {% endif %}
+                </li>
                 {% endfor %}
             </ul>
         </div>
